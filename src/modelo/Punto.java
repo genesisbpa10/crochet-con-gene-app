@@ -1,47 +1,46 @@
 package modelo;
 
 public class Punto {
-    private String nombre;
-    private String instrucciones;
-    private String representacionSimbolica;
-    private Material material;
+    private String nombrePunto;
+    private String descripcionPunto;
+    private String caracteristicasPunto;
+    private String pesoPunto;
 
-    public Punto(String nombre, String instrucciones, String representacionSimbolica, Material material) {
-        this.nombre = nombre;
-        this.instrucciones = instrucciones;
-        this.representacionSimbolica = representacionSimbolica;
-        this.material = material;
+    public Punto(String nombrePunto, String descripcionPunto, String caracteristicasPunto, String pesoPunto) {
+        this.nombrePunto = nombrePunto;
+        this.descripcionPunto = descripcionPunto;
+        this.caracteristicasPunto = caracteristicasPunto;
+        this.pesoPunto = pesoPunto;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombrePunto() {
+        return nombrePunto;
     }
 
-    public String getInstrucciones() {
-        return instrucciones;
+    public void setNombrePunto(String nombrePunto) {
+        this.nombrePunto = nombrePunto;
     }
 
-    public String getRepresentacionSimbolica() {
-        return representacionSimbolica;
+    public String descripcionPunto() {
+        return descripcionPunto;
     }
 
-    public Material getMaterial() {
-        return material;
+    public void setDescripcionPunto(String descripcionPunto) {
+        this.descripcionPunto = descripcionPunto;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String caracteristicasPunto() {
+        return caracteristicasPunto;
     }
 
-    public void setInstrucciones(String instrucciones) {
-        this.instrucciones = instrucciones;
+    public void setCaracteristicasPunto(String caracteristicasPunto) {
+        this.caracteristicasPunto = caracteristicasPunto;
+    }
+    public String pesoPunto() {
+        return pesoPunto;
+    }
+    public void setPesoPunto(String pesoPunto) {
+        this.pesoPunto = pesoPunto;
     }
 
-    public void setRepresentacionSimbolica(String representacionSimbolica) {
-        this.representacionSimbolica = representacionSimbolica;
-    }
-
-    public void setMaterial(Material material) {
-        this.material = material;
-    }
 }

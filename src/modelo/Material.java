@@ -1,37 +1,55 @@
 package modelo;
 
 public class Material {
-    private String tipo; // lana, hilo, algodón, etc.
-    private String color;
-    private double pesoPorMetro;
+    private int idMaterial;
+    private String nombreMaterial;
+    private String colorMaterial;
+    private double pesoMaterial;
 
-    public Material(String tipo, String color, double pesoPorMetro) {
-        this.tipo = tipo;
-        this.color = color;
-        this.pesoPorMetro = pesoPorMetro;
+    // Constructor sin ID (para nuevos materiales antes de ser guardados)
+    public Material(String nombreMaterial, String colorMaterial, double pesoMaterial) {
+        this.nombreMaterial = nombreMaterial;
+        this.colorMaterial = colorMaterial;
+        this.pesoMaterial = pesoMaterial;
     }
 
-    public String getTipo() {
-        return tipo;
+    // Constructor con ID (para materiales que ya existen en la base de datos)
+    public Material(int idMaterial, String nombreMaterial, String colorMaterial, double pesoMaterial) {
+        this.idMaterial = idMaterial;
+        this.nombreMaterial = nombreMaterial;
+        this.colorMaterial = colorMaterial;
+        this.pesoMaterial = pesoMaterial;
     }
 
-    public String getColor() {
-        return color;
+    public int getIdMaterial() {
+        return idMaterial;
     }
 
-    public double getPesoPorMetro() {
-        return pesoPorMetro;
+    public void setIdMaterial(int idMaterial) {
+        this.idMaterial = idMaterial;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public String getNombreMaterial() {
+        return nombreMaterial;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setNombreMaterial(String nombreMaterial) {
+        this.nombreMaterial = nombreMaterial;
     }
 
-    public void setPesoPorMetro(double pesoPorMetro) {
-        this.pesoPorMetro = pesoPorMetro;
+    public String getColorMaterial() {
+        return colorMaterial;
+    }
+
+    public void setColorMaterial(String colorMaterial) {
+        this.colorMaterial = colorMaterial;
+    }
+
+    public double getPesoMaterial() {
+        return pesoMaterial;
+    }
+
+    public void setPesoMaterial(double pesoMaterial) {
+        this.pesoMaterial = pesoMaterial;
     }
 }

@@ -2,12 +2,11 @@ package modelo;
 
 public class UsuarioEstandar extends Usuario {
 
-    public UsuarioEstandar(String nombre, String correo, String contrasena, String tipoUsuario) {
-        super(nombre, correo, contrasena, tipoUsuario);
+    public UsuarioEstandar(int idUsuario, String nombreUsuario, String correoUsuario, String contrasenaUsuario, String rolUsuario, java.time.LocalDateTime fechaCreacionUsuario) {
+        super(idUsuario, nombreUsuario, correoUsuario, contrasenaUsuario, rolUsuario, fechaCreacionUsuario);
     }
 
-    @Override
-    public String getTipoUsuario() {
-        return "Estandar";
+    public UsuarioEstandar(String nombreUsuario, String correoUsuario, String contrasenaUsuario) {
+        super(nombreUsuario, correoUsuario, contrasenaUsuario, "estandar");
     }
 }

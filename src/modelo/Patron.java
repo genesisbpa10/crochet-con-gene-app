@@ -1,50 +1,66 @@
 package modelo;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Patron {
-    private String nombre;
-    private String descripcion;
-    private String tipoPrenda;
-    private Map<Punto, Integer> composicionPuntos;
+    private int idPatron;
+    private String nombrePatron;
+    private String descripcionPatron;
+    private String tipoPatron;
+    private List<ComposicionPatron> composicion; // Lista de puntos con sus materiales
 
-    public Patron(String nombre, String descripcion, String tipoPrenda) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.tipoPrenda = tipoPrenda;
-        this.composicionPuntos = new HashMap<>();
+    public Patron(String nombrePatron, String descripcionPatron, String tipoPatron) {
+        this.nombrePatron = nombrePatron;
+        this.descripcionPatron = descripcionPatron;
+        this.tipoPatron = tipoPatron;
+        this.composicion = new ArrayList<>();
     }
 
-    public String getNombre() {
-        return nombre;
+    public Patron(int idPatron, String nombrePatron, String descripcionPatron, String tipoPatron) {
+        this(nombrePatron, descripcionPatron, tipoPatron);
+        this.idPatron = idPatron;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public void agregarComposicion(ComposicionPatron cp) {
+        this.composicion.add(cp);
     }
 
-    public String getTipoPrenda() {
-        return tipoPrenda;
+    public List<ComposicionPatron> getComposicion() {
+        return composicion;
     }
 
-    public Map<Punto, Integer> getComposicionPuntos() {
-        return composicionPuntos;
+    // Getters y setters restantes
+
+    public int getIdPatron() {
+        return idPatron;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setIdPatron(int idPatron) {
+        this.idPatron = idPatron;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public String getNombrePatron() {
+        return nombrePatron;
     }
 
-    public void setTipoPrenda(String tipoPrenda) {
-        this.tipoPrenda = tipoPrenda;
+    public void setNombrePatron(String nombrePatron) {
+        this.nombrePatron = nombrePatron;
     }
 
-    public void agregarPunto(Punto punto, int cantidad) {
-        this.composicionPuntos.put(punto, cantidad);
+    public String getDescripcionPatron() {
+        return descripcionPatron;
+    }
+
+    public void setDescripcionPatron(String descripcionPatron) {
+        this.descripcionPatron = descripcionPatron;
+    }
+
+    public String getTipoPatron() {
+        return tipoPatron;
+    }
+
+    public void setTipoPatron(String tipoPatron) {
+        this.tipoPatron = tipoPatron;
     }
 }
