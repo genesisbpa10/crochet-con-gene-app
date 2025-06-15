@@ -1,47 +1,79 @@
 package modelo;
 
+import java.time.LocalDateTime;
+
 public class Usuario {
-    private String nombre;
-    private String correo;
-    private String contrasena;
-    private String tipoUsuario; // "Administrador" o "Estandar"
+    private int idUsuario;
+    private String nombreUsuario;
+    private String correoUsuario;
+    private String contrasenaUsuario;
+    private String rolUsuario; // "estandar" o "administrador"
+    private LocalDateTime fechaCreacionUsuario;
 
-    public Usuario(String nombre, String correo, String contrasena, String tipoUsuario) {
-        this.nombre = nombre;
-        this.correo = correo;
-        this.contrasena = contrasena;
-        this.tipoUsuario = tipoUsuario;
-    }  
-
-    public String getNombre() {
-        return nombre;
+    public Usuario(int idUsuario, String nombreUsuario, String correoUsuario, String contrasenaUsuario, String rolUsuario, LocalDateTime fechaCreacionUsuario) {
+        this.idUsuario = idUsuario;
+        this.nombreUsuario = nombreUsuario;
+        this.correoUsuario = correoUsuario;
+        this.contrasenaUsuario = contrasenaUsuario;
+        this.rolUsuario = rolUsuario;
+        this.fechaCreacionUsuario = fechaCreacionUsuario;
     }
 
-    public String getCorreo() {
-        return correo;
+    public Usuario(String nombreUsuario, String correoUsuario, String contrasenaUsuario, String rolUsuario) {
+        this.nombreUsuario = nombreUsuario;
+        this.correoUsuario = correoUsuario;
+        this.contrasenaUsuario = contrasenaUsuario;
+        this.rolUsuario = rolUsuario;
+        this.fechaCreacionUsuario = LocalDateTime.now();
     }
 
-    public String getcontrasena() {
-        return contrasena;
+    // Getters
+    public int getIdUsuario() {
+        return idUsuario;
     }
 
-    public String getTipoUsuario() {
-        return tipoUsuario;
+    public String getNombreUsuario() {
+        return nombreUsuario;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getcorreoUsuario() {
+        return correoUsuario;
     }
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
+    public String getcontrasenaUsuario() {
+        return contrasenaUsuario;
     }
 
-    public void setcontrasena(String contrasena) {
-        this.contrasena = contrasena;
+    public String getRolUsuario() {
+        return rolUsuario;
     }
 
-    public void setTipoUsuario(String tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
+    public LocalDateTime getFechaCreacionUsuario() {
+        return fechaCreacionUsuario;
+    }
+
+    // Setters
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public void setcorreoUsuario(String correoUsuario) {
+        this.correoUsuario = correoUsuario;
+    }
+
+    public void setcontrasenaUsuario(String contrasenaUsuario) {
+        this.contrasenaUsuario = contrasenaUsuario;
+    }
+
+    public void setRolUsuario(String rolUsuario) {
+        this.rolUsuario = rolUsuario;
+    }
+
+    public void setFechaCreacionUsuario(LocalDateTime fechaCreacionUsuario) {
+        this.fechaCreacionUsuario = fechaCreacionUsuario;
     }
 }
