@@ -36,11 +36,11 @@ public class Usuario {
         return nombreUsuario;
     }
 
-    public String getcorreoUsuario() {
+    public String getCorreoUsuario() {
         return correoUsuario;
     }
 
-    public String getcontrasenaUsuario() {
+    public String getContrasenaUsuario() {
         return contrasenaUsuario;
     }
 
@@ -61,11 +61,11 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public void setcorreoUsuario(String correoUsuario) {
+    public void setCorreoUsuario(String correoUsuario) {
         this.correoUsuario = correoUsuario;
     }
 
-    public void setcontrasenaUsuario(String contrasenaUsuario) {
+    public void setContrasenaUsuario(String contrasenaUsuario) {
         this.contrasenaUsuario = contrasenaUsuario;
     }
 

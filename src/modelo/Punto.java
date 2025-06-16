@@ -21,7 +21,7 @@ public class Punto {
         this.nombrePunto = nombrePunto;
     }
 
-    public String descripcionPunto() {
+    public String getDescripcionPunto() {
         return descripcionPunto;
     }
 
@@ -29,18 +29,19 @@ public class Punto {
         this.descripcionPunto = descripcionPunto;
     }
 
-    public String caracteristicasPunto() {
+    public String getCaracteristicasPunto() {
         return caracteristicasPunto;
     }
 
     public void setCaracteristicasPunto(String caracteristicasPunto) {
         this.caracteristicasPunto = caracteristicasPunto;
     }
-    public String pesoPunto() {
+
+    public String getPesoPunto() {
         return pesoPunto;
     }
+
     public void setPesoPunto(String pesoPunto) {
         this.pesoPunto = pesoPunto;
     }
-
 }
