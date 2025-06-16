@@ -30,7 +30,7 @@ public class VentanaRegistro extends Application {
         Label lblCorreo = new Label("Correo:");
         TextField txtCorreo = new TextField();
 
-        Label lblContrasena = new Label("Contraseña:");
+        Label lblContrasena = new Label("Contrasena:");
         PasswordField txtContrasena = new PasswordField();
 
         Label lblRol = new Label("Rol:");

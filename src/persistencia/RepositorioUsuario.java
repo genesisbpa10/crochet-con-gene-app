@@ -1,6 +1,8 @@
 package persistencia;
 
 import modelo.Usuario;
+import modelo.UsuarioAdministrador;
+import modelo.UsuarioEstandar;
 
 import java.sql.*;
 
@@ -27,14 +29,18 @@ public class RepositorioUsuario {
             stmt.setString(1, correo);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return new Usuario(
-                    rs.getInt("idUsuario"),
-                    rs.getString("nombreUsuario"),
-                    rs.getString("correoUsuario"),
-                    rs.getString("contrasenaUsuario"),
-                    rs.getString("rolUsuario"),
-                    rs.getTimestamp("fechaCreacionUsuario").toLocalDateTime()
-                );
+                String rol = rs.getString("rolUsuario");
+                int id = rs.getInt("idUsuario");
+                String nombre = rs.getString("nombreUsuario");
+                String contrasena = rs.getString("contrasenaUsuario");
+                String correoUsuario = rs.getString("correoUsuario");
+                Timestamp fecha = rs.getTimestamp("fechaCreacionUsuario");
+
+                if ("administrador".equalsIgnoreCase(rol)) {
+                    return new UsuarioAdministrador(id, nombre, correoUsuario, contrasena, rol, fecha.toLocalDateTime());
+                } else {
+                    return new UsuarioEstandar(id, nombre, correoUsuario, contrasena, rol, fecha.toLocalDateTime());
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();

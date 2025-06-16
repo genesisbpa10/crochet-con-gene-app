@@ -22,10 +22,10 @@ public class VentanaLogin extends Application {
         Label correoLabel = new Label("Correo:");
         TextField correoField = new TextField();
 
-        Label contrasenaLabel = new Label("Contraseña:");
+        Label contrasenaLabel = new Label("Contrasena:");
         PasswordField contrasenaField = new PasswordField();
 
-        Button loginButton = new Button("Iniciar sesión");
+        Button loginButton = new Button("Iniciar sesion");
         Button volverButton = new Button("Volver");
 
         Label mensajeLabel = new Label();

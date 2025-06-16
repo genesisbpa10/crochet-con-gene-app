@@ -2,13 +2,13 @@
 
 # Modo Consola
 
-## Compilar la aplicación:
+## Compilar la aplicacion:
 javac --module-path lib/javafx-sdk-20.0.2/lib \
       --add-modules javafx.controls,javafx.fxml \
       -cp "lib/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar" \
       -d out $(find src -name "*.java")
 
-## Ejecutar la aplicación Main:
+## Ejecutar la aplicacion Main:
 <!-- 
 java --module-path lib/javafx-sdk-20.0.2/lib \
      --add-modules javafx.controls,javafx.fxml \
@@ -23,20 +23,14 @@ java --module-path lib/javafx-sdk-20.0.2/lib \
 
 # Modo Java FX
 
-## Compilar la aplicación
+## Compilar la aplicacion
 javac --module-path lib/javafx-sdk-20.0.2/lib \
       --add-modules javafx.controls,javafx.fxml \
       -cp "lib/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar" \
       -d out $(find src -name "*.java")
 
-## Ejecutar la aplicación Ventana Principal
+## Ejecutar la aplicacion Ventana Inicio
 java --module-path lib/javafx-sdk-20.0.2/lib \
      --add-modules javafx.controls,javafx.fxml \
      -cp "out:lib/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar" \
-     vista.VentanaPrincipal
-
-## Ejecutar la aplicación Ventana Login
-java --module-path lib/javafx-sdk-20.0.2/lib \
-     --add-modules javafx.controls,javafx.fxml \
-     -cp "out:lib/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar" \
-     vista.VentanaLogin
+     vista.VentanaInicio
