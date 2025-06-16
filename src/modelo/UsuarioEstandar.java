@@ -11,6 +11,6 @@ public class UsuarioEstandar extends Usuario {
 
     @Override
     public void mostrarMenu() {
-        System.out.println("Menú estandar: [Ver patrones, Crear puntos, etc.]");
+        System.out.println("Menu estandar: [Ver patrones, Crear puntos, etc.]");
     }
 }
