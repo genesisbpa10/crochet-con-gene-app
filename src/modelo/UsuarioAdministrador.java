@@ -11,6 +11,6 @@ public class UsuarioAdministrador extends Usuario {
 
     @Override
     public void mostrarMenu() {
-        System.out.println("Menú administrador: [Gestionar materiales, Ver usuarios, etc.]");
+        System.out.println("Menu administrador: [Gestionar materiales, Ver usuarios, etc.]");
     }
 }

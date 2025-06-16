@@ -13,7 +13,7 @@ public class Consola {
         boolean salir = false;
 
         while (!salir) {
-            System.out.println("\n--- Menú Inicial ---");
+            System.out.println("\n--- Menu Inicial ---");
             System.out.println("1. Registrar nuevo usuario");
             System.out.println("2. Iniciar sesion");
             System.out.println("3. Salir");
@@ -78,7 +78,7 @@ public class Consola {
         boolean cerrarSesion = false;
 
         while (!cerrarSesion) {
-            System.out.println("\n--- Menú Principal del Sistema ---");
+            System.out.println("\n--- Menu Principal del Sistema ---");
             System.out.println("1. Gestion de Patrones");
             System.out.println("2. Gestion de Puntos");
             System.out.println("3. Gestion de Materiales");

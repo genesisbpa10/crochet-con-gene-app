@@ -42,6 +42,6 @@ public abstract class Usuario {
     public void setRolUsuario(String rolUsuario) { this.rolUsuario = rolUsuario; }
     public void setFechaCreacionUsuario(LocalDateTime fechaCreacionUsuario) { this.fechaCreacionUsuario = fechaCreacionUsuario; }
 
-    // Método usando pPolimorfismo
+    // Método usando Polimorfismo
     public abstract void mostrarMenu();
 }
