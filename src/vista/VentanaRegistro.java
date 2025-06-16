@@ -26,7 +26,7 @@ public class VentanaRegistro {
         TextField textFieldNombre = new TextField();
         Label labelCorreo = new Label("Correo:");
         TextField textFieldCorreo = new TextField();
-        Label labelContrasena = new Label("Contraseña:");
+        Label labelContrasena = new Label("contrasenaUsuario:");
         PasswordField passwordFieldContrasena = new PasswordField();
         Button buttonRegistrar = new Button("Registrar");
         
