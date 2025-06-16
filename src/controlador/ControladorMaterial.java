@@ -2,7 +2,6 @@ package controlador;
 
 import modelo.Material;
 import persistencia.RepositorioMaterial;
-
 import java.util.List;
 
 public class ControladorMaterial {
@@ -12,12 +11,9 @@ public class ControladorMaterial {
         this.repositorio = new RepositorioMaterial();
     }
 
-    public void registrarMaterial(Material material) {
+    public void registrarMaterial(String nombre, String color, String tipo, double peso, int idUsuario) {
+        Material material = new Material(nombre, color, tipo, peso, idUsuario);
         repositorio.guardar(material);
-    }
-
-    public List<Material> obtenerMateriales() {
-        return repositorio.listarTodos();
     }
 
     public Material buscarPorId(int id) {

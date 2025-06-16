@@ -23,6 +23,10 @@ public class VentanaPrincipal extends Application {
         Label bienvenida = new Label("Bienvenido/a " + usuarioLogueado.getNombreUsuario());
 
         Button materialesBtn = new Button("Gestion de Materiales");
+        materialesBtn.setOnAction(e -> {
+            VentanaRegistrarMaterial ventana = new VentanaRegistrarMaterial(usuarioLogueado);
+            ventana.mostrarVentana();
+        });
         Button puntosBtn = new Button("Gestion de Puntos");
         Button patronesBtn = new Button("Gestion de Patrones");
         Button logoutBtn = new Button("Cerrar sesion");
