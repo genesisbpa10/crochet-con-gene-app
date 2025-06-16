@@ -1,56 +1,90 @@
 package vista;
 
+import controlador.ControladorUsuario;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import modelo.Usuario;
 
-import controlador.ControladorUsuario;
+public class VentanaRegistro extends Application {
 
-public class VentanaRegistro {
-    private ControladorUsuario controladorUsuario;
+    private final ControladorUsuario controladorUsuario = new ControladorUsuario();
 
-    // Constructor que recibe el controlador
-    public VentanaRegistro(ControladorUsuario controladorUsuario) {
-        this.controladorUsuario = controladorUsuario;
-    }
+    @Override
+    public void start(Stage stage) {
+        stage.setTitle("Registro de Usuario");
 
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Registro de Usuario");
-        
         GridPane grid = new GridPane();
-        grid.setHgap(10);
+        grid.setAlignment(Pos.CENTER);
         grid.setVgap(10);
-        
-        Label labelNombre = new Label("Nombre:");
-        TextField textFieldNombre = new TextField();
-        Label labelCorreo = new Label("Correo:");
-        TextField textFieldCorreo = new TextField();
-        Label labelContrasena = new Label("contrasenaUsuario:");
-        PasswordField passwordFieldContrasena = new PasswordField();
-        Button buttonRegistrar = new Button("Registrar");
-        
-        grid.add(labelNombre, 0, 0);
-        grid.add(textFieldNombre, 1, 0);
-        grid.add(labelCorreo, 0, 1);
-        grid.add(textFieldCorreo, 1, 1);
-        grid.add(labelContrasena, 0, 2);
-        grid.add(passwordFieldContrasena, 1, 2);
-        grid.add(buttonRegistrar, 1, 3);
-        
-        buttonRegistrar.setOnAction(event -> {
-            String nombre = textFieldNombre.getText();
-            String correo = textFieldCorreo.getText();
-            String contrasena = passwordFieldContrasena.getText();
-            String rol = "estandar"; // Puedes pedirlo al usuario si lo deseas
+        grid.setHgap(10);
+        grid.setPadding(new Insets(25));
 
-            controladorUsuario.registrarUsuario(nombre, correo, contrasena, rol);
-            System.out.println("Usuario registrado: " + nombre + ", " + correo);
-            primaryStage.close();
+        Label lblNombre = new Label("Nombre:");
+        TextField txtNombre = new TextField();
+
+        Label lblCorreo = new Label("Correo:");
+        TextField txtCorreo = new TextField();
+
+        Label lblContrasena = new Label("Contraseña:");
+        PasswordField txtContrasena = new PasswordField();
+
+        Label lblRol = new Label("Rol:");
+        ComboBox<String> cbRol = new ComboBox<>();
+        cbRol.getItems().addAll("estandar", "administrador");
+        cbRol.setValue("estandar");
+
+        Button btnRegistrar = new Button("Registrar");
+        Button btnVolver = new Button("Volver");
+
+        Label lblResultado = new Label();
+
+        btnRegistrar.setOnAction(e -> {
+            String nombre = txtNombre.getText();
+            String correo = txtCorreo.getText();
+            String contrasena = txtContrasena.getText();
+            String rol = cbRol.getValue();
+
+            if (nombre.isEmpty() || correo.isEmpty() || contrasena.isEmpty()) {
+                lblResultado.setText("Todos los campos son obligatorios.");
+                return;
+            }
+
+            Usuario nuevo = controladorUsuario.registrarUsuario(nombre, correo, contrasena, rol);
+            if (nuevo != null) {
+                lblResultado.setText("Usuario registrado exitosamente.");
+            } else {
+                lblResultado.setText("Error al registrar usuario.");
+            }
         });
-        
-        Scene scene = new Scene(grid, 300, 200);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+
+        btnVolver.setOnAction(e -> {
+            try {
+                new VentanaInicio().start(new Stage());
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+            stage.close();
+        });
+
+        grid.add(lblNombre, 0, 0);
+        grid.add(txtNombre, 1, 0);
+        grid.add(lblCorreo, 0, 1);
+        grid.add(txtCorreo, 1, 1);
+        grid.add(lblContrasena, 0, 2);
+        grid.add(txtContrasena, 1, 2);
+        grid.add(lblRol, 0, 3);
+        grid.add(cbRol, 1, 3);
+        grid.add(btnRegistrar, 0, 4);
+        grid.add(btnVolver, 1, 4);
+        grid.add(lblResultado, 0, 5, 2, 1);
+
+        Scene scene = new Scene(grid, 400, 300);
+        stage.setScene(scene);
+        stage.show();
     }
 }
