@@ -38,12 +38,12 @@ public class VentanaRegistro extends Application {
         cbRol.getItems().addAll("estandar", "administrador");
         cbRol.setValue("estandar");
 
-        Button btnRegistrar = new Button("Registrar");
-        Button btnVolver = new Button("Volver");
+        Button registrarButton = new Button("Registrar");
+        Button volverButton = new Button("Volver");
 
         Label lblResultado = new Label();
 
-        btnRegistrar.setOnAction(e -> {
+        registrarButton.setOnAction(e -> {
             String nombre = txtNombre.getText();
             String correo = txtCorreo.getText();
             String contrasena = txtContrasena.getText();
@@ -62,7 +62,7 @@ public class VentanaRegistro extends Application {
             }
         });
 
-        btnVolver.setOnAction(e -> {
+        volverButton.setOnAction(e -> {
             try {
                 new VentanaInicio().start(new Stage());
             } catch (Exception ex) {
@@ -79,8 +79,8 @@ public class VentanaRegistro extends Application {
         grid.add(txtContrasena, 1, 2);
         grid.add(lblRol, 0, 3);
         grid.add(cbRol, 1, 3);
-        grid.add(btnRegistrar, 0, 4);
-        grid.add(btnVolver, 1, 4);
+        grid.add(registrarButton, 0, 4);
+        grid.add(volverButton, 1, 4);
         grid.add(lblResultado, 0, 5, 2, 1);
 
         Scene scene = new Scene(grid, 400, 300);
