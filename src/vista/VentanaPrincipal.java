@@ -22,10 +22,10 @@ public class VentanaPrincipal extends Application {
     public void start(Stage primaryStage) {
         Label bienvenida = new Label("Bienvenido/a " + usuarioLogueado.getNombreUsuario());
 
-        Button materialesBtn = new Button("Gestión de Materiales");
-        Button puntosBtn = new Button("Gestión de Puntos");
-        Button patronesBtn = new Button("Gestión de Patrones");
-        Button logoutBtn = new Button("Cerrar sesión");
+        Button materialesBtn = new Button("Gestion de Materiales");
+        Button puntosBtn = new Button("Gestion de Puntos");
+        Button patronesBtn = new Button("Gestion de Patrones");
+        Button logoutBtn = new Button("Cerrar sesion");
 
         VBox layout = new VBox(10, bienvenida);
 

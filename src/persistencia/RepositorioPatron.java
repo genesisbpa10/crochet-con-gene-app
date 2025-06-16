@@ -15,7 +15,7 @@ public class RepositorioPatron {
             stmt.setString(1, patron.getNombrePatron());
             stmt.setString(2, patron.getDescripcionPatron());
             stmt.setString(3, patron.getTipoPatron());
-            stmt.setInt(4, 4); // Reemplazá con el ID del usuario que lo creó
+            stmt.setInt(4, 4); // Reemplaza con el ID del usuario que lo creo
             stmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -54,7 +54,7 @@ public class RepositorioPatron {
         }
     }
 
-    // Método para buscar un patrón por nombre
+    // Método para buscar un patron por nombre
     public Patron buscarPorNombre(String nombre) {
         String sql = "SELECT * FROM Patron WHERE nombrePatron = ?";
         try (Connection conn = ConexionBD.obtenerConexion();
@@ -74,7 +74,7 @@ public class RepositorioPatron {
         }
         return null;
     }
-    // Método para actualizar un patrón existente
+    // Método para actualizar un patron existente
     public void actualizar(Patron patron) {
         String sql = "UPDATE Patron SET nombrePatron = ?, descripcionPatron = ?, tipoPatron = ? WHERE idPatron = ?";
         try (Connection conn = ConexionBD.obtenerConexion();
@@ -88,7 +88,7 @@ public class RepositorioPatron {
             e.printStackTrace();
         }
     }
-    // Método para buscar un patrón por ID
+    // Método para buscar un patron por ID
     public Patron buscarPorId(int idPatron) {
         String sql = "SELECT * FROM Patron WHERE idPatron = ?";
         try (Connection conn = ConexionBD.obtenerConexion();

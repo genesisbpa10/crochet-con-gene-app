@@ -15,7 +15,26 @@ public class ControladorUsuario {
     public Usuario autenticar(String correo, String contrasena) {
         Usuario usuario = repositorio.buscarPorCorreo(correo);
         if (usuario != null && usuario.getContrasenaUsuario().equals(contrasena)) {
-            return usuario;
+            // Devolver la subclase correspondiente
+            if ("administrador".equalsIgnoreCase(usuario.getRolUsuario())) {
+                return new UsuarioAdministrador(
+                    usuario.getIdUsuario(),
+                    usuario.getNombreUsuario(),
+                    usuario.getCorreoUsuario(),
+                    usuario.getContrasenaUsuario(),
+                    usuario.getRolUsuario(),
+                    usuario.getFechaCreacionUsuario()
+                );
+            } else {
+                return new UsuarioEstandar(
+                    usuario.getIdUsuario(),
+                    usuario.getNombreUsuario(),
+                    usuario.getCorreoUsuario(),
+                    usuario.getContrasenaUsuario(),
+                    usuario.getRolUsuario(),
+                    usuario.getFechaCreacionUsuario()
+                );
+            }
         }
         return null;
     }

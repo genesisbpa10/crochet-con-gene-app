@@ -15,9 +15,9 @@ public class Consola {
         while (!salir) {
             System.out.println("\n--- Menú Inicial ---");
             System.out.println("1. Registrar nuevo usuario");
-            System.out.println("2. Iniciar sesión");
+            System.out.println("2. Iniciar sesion");
             System.out.println("3. Salir");
-            System.out.print("Seleccione una opción: ");
+            System.out.print("Seleccione una opcion: ");
             String opcion = scanner.nextLine();
 
             switch (opcion) {
@@ -32,7 +32,7 @@ public class Consola {
                     System.out.println("Saliendo del sistema...");
                     salir = true;
                 }
-                default -> System.out.println("Opción inválida. Intente nuevamente.");
+                default -> System.out.println("Opcion invalida. Intente nuevamente.");
             }
         }
 
@@ -45,7 +45,7 @@ public class Consola {
         String nombre = scanner.nextLine();
         System.out.print("Correo: ");
         String correo = scanner.nextLine();
-        System.out.print("Contraseña: ");
+        System.out.print("Contrasena: ");
         String contrasena = scanner.nextLine();
         System.out.print("Rol (estandar o administrador): ");
         String rol = scanner.nextLine().toLowerCase();
@@ -59,10 +59,10 @@ public class Consola {
     }
 
     private static Usuario iniciarSesion() {
-        System.out.println("\n--- Inicio de Sesión ---");
+        System.out.println("\n--- Inicio de Sesion ---");
         System.out.print("Correo: ");
         String correo = scanner.nextLine();
-        System.out.print("Contraseña: ");
+        System.out.print("Contrasena: ");
         String contrasena = scanner.nextLine();
 
         Usuario usuario = controladorUsuario.login(correo, contrasena);
@@ -79,11 +79,11 @@ public class Consola {
 
         while (!cerrarSesion) {
             System.out.println("\n--- Menú Principal del Sistema ---");
-            System.out.println("1. Gestión de Patrones");
-            System.out.println("2. Gestión de Puntos");
-            System.out.println("3. Gestión de Materiales");
-            System.out.println("4. Cerrar sesión");
-            System.out.print("Seleccione una opción: ");
+            System.out.println("1. Gestion de Patrones");
+            System.out.println("2. Gestion de Puntos");
+            System.out.println("3. Gestion de Materiales");
+            System.out.println("4. Cerrar sesion");
+            System.out.print("Seleccione una opcion: ");
             String opcion = scanner.nextLine();
 
             switch (opcion) {
@@ -97,10 +97,10 @@ public class Consola {
                     }
                 }
                 case "4" -> {
-                    System.out.println("Cerrando sesión...");
+                    System.out.println("Cerrando sesion...");
                     cerrarSesion = true;
                 }
-                default -> System.out.println("Opción inválida. Intente nuevamente.");
+                default -> System.out.println("Opcion invalida. Intente nuevamente.");
             }
         }
     }

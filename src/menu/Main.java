@@ -15,9 +15,9 @@ public class Main {
         Usuario logueado = ctrl.login("juan@example.com", "123456");
 
         if (logueado != null) {
-            System.out.println("Autenticación exitosa para: " + logueado.getNombreUsuario());
+            System.out.println("Autenticacion exitosa para: " + logueado.getNombreUsuario());
         } else {
-            System.out.println("Error de autenticación");
+            System.out.println("Error de autenticacion");
         }
     }
 }

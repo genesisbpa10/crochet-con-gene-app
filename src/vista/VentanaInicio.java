@@ -13,7 +13,7 @@ public class VentanaInicio extends Application {
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Sistema Crochet - Inicio");
 
-        Button btnLogin = new Button("Iniciar sesión");
+        Button btnLogin = new Button("Iniciar sesion");
         btnLogin.setOnAction(e -> {
             VentanaLogin ventanaLogin = new VentanaLogin();
             try {

@@ -6,7 +6,7 @@ VALUES ('Genesis Perez', 'genesisbetaly@gmail.com', '5.4.3.2.1!PsW', 'administra
 SET @last_id = LAST_INSERT_ID();
 INSERT INTO UsuarioAdministrador (idUsuario) VALUES (@last_id);
 
--- Insertar usuario estándar
+-- Insertar usuario estandar
 INSERT INTO Usuario (nombreUsuario, correoUsuario, contrasenaUsuario, rolUsuario)
 VALUES ('Genesis Pérez', 'genesisbetaly99@gmail.com', 'STD!.12.12.!!', 'estandar');
 SET @ultimoId = LAST_INSERT_ID();
@@ -18,8 +18,8 @@ VALUES (3, 'Lana Merino', 'Lana', 'Gris', 200.00);
 
 -- Punto
 INSERT INTO Punto (nombrePunto, descripcionPunto, caracteristicasPunto, pesoPunto, idUsuario)
-VALUES ('Punto enano', 'Punto básico para uniones', 'Muy corto y compacto', 5.00, 4);
+VALUES ('Punto enano', 'Punto basico para uniones', 'Muy corto y compacto', 5.00, 4);
 
--- Patrón
+-- Patron
 INSERT INTO Patron (nombrePatron, descripcionPatron, tipoPatron, idUsuario)
-VALUES ('Bufanda de invierno', 'Patrón para una bufanda tejida en punto vareta', 'Accesorio', 4);
+VALUES ('Bufanda de invierno', 'Patron para una bufanda tejida en punto vareta', 'Accesorio', 4);
