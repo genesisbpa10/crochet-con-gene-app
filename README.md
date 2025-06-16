@@ -40,7 +40,7 @@ crochet-con-gene-app/
 - **MySQL Connector/J 8.3.0**
 - Sistema operativo: Windows, Linux (WSL) o macOS
 
-## ⚙️ Configuración inicial
+## Configuración inicial
 
 1. **Clonar el repositorio**
 
@@ -102,6 +102,21 @@ java --module-path lib/javafx-sdk-20.0.2/lib \
      -cp "out:lib/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar" \
      vista.VentanaInicio
 ```
+
+## Nota para usuarios de Windows
+
+### Si estás ejecutando los comandos directamente desde CMD o PowerShell en Windows (no WSL), reemplaza los dos puntos : del classpath (-cp) por punto y coma ;, ya que Windows utiliza ; como separador de rutas:
+
+Por ejemplo:
+
+```bash
+java --module-path lib\javafx-sdk-20.0.2\lib ^
+     --add-modules javafx.controls,javafx.fxml ^
+     -cp "out;lib/mysql-connector-j-8.3.0\mysql-connector-j-8.3.0.jar" ^
+     menu.Consola
+```
+
+### En cambio, si estás utilizando WSL o cualquier distribución Linux, los comandos con : como separador de rutas funcionan correctamente, como en los ejemplos originalmente especificados.
 
 ## Funcionalidades implementadas
 
