@@ -7,7 +7,7 @@ import java.sql.*;
 public class RepositorioUsuario {
 
     public void guardar(Usuario usuario) {
-        String sql = "INSERT INTO Usuario (nombreUsuario, correoElectronico, contraseña, rolUsuario) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO Usuario (nombreUsuario, correoUsuario, contrasenaUsuario, rolUsuario) VALUES (?, ?, ?, ?)";
         try (Connection conn = ConexionBD.obtenerConexion();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, usuario.getNombreUsuario());
@@ -21,7 +21,7 @@ public class RepositorioUsuario {
     }
 
     public Usuario buscarPorCorreo(String correo) {
-        String sql = "SELECT * FROM Usuario WHERE correoElectronico = ?";
+        String sql = "SELECT * FROM Usuario WHERE correoUsuario = ?";
         try (Connection conn = ConexionBD.obtenerConexion();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, correo);
@@ -30,8 +30,8 @@ public class RepositorioUsuario {
                 return new Usuario(
                     rs.getInt("idUsuario"),
                     rs.getString("nombreUsuario"),
-                    rs.getString("correoElectronico"),
-                    rs.getString("contraseña"),
+                    rs.getString("correoUsuario"),
+                    rs.getString("contrasenaUsuario"),
                     rs.getString("rolUsuario"),
                     rs.getTimestamp("fechaCreacionUsuario").toLocalDateTime()
                 );
