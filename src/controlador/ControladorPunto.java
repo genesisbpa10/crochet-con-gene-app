@@ -12,8 +12,8 @@ public class ControladorPunto {
         this.repositorio = new RepositorioPunto();
     }
 
-    public void registrarPunto(Punto punto) {
-        repositorio.guardar(punto);
+    public void registrarPunto(Punto punto, int idUsuario) {
+        repositorio.guardar(punto, idUsuario);
     }
 
     public List<Punto> obtenerPuntos() {
@@ -28,3 +28,4 @@ public class ControladorPunto {
         repositorio.eliminar(id);
     }
 }
+    

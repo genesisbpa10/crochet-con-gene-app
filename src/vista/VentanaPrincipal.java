@@ -27,7 +27,13 @@ public class VentanaPrincipal extends Application {
             VentanaRegistrarMaterial ventana = new VentanaRegistrarMaterial(usuarioLogueado);
             ventana.mostrarVentana();
         });
-        Button puntosBtn = new Button("Gestion de Puntos");
+
+        Button puntosBtn = new Button("Gestión de Puntos");
+        puntosBtn.setOnAction(e -> {
+            VentanaRegistrarPunto ventana = new VentanaRegistrarPunto(usuarioLogueado);
+            ventana.mostrarVentana();
+        });
+
         Button patronesBtn = new Button("Gestion de Patrones");
         Button logoutBtn = new Button("Cerrar sesion");
 
