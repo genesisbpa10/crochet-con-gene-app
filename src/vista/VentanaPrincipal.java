@@ -36,7 +36,7 @@ public class VentanaPrincipal extends Application {
         Button patronesBtn = new Button("Gestión de Patrones");
         // ← pasamos el usuarioLogueado aquí también
         patronesBtn.setOnAction(e ->
-            new VentanaRegistrarPatron(usuarioLogueado).mostrarVentana()
+            new VentanaPatrones(usuarioLogueado).mostrarVentana()
         );
 
         Button logoutBtn = new Button("Cerrar sesión");

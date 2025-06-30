@@ -81,17 +81,6 @@ javac --module-path lib/javafx-sdk-20.0.2/lib \
       -d out $(find src -name "*.java")
 ```
 
-## Modo Consola
-
-### Ejecutar la app en modo texto:
-
-```bash
-java --module-path lib/javafx-sdk-20.0.2/lib \
-     --add-modules javafx.controls,javafx.fxml \
-     -cp "out:lib/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar" \
-     menu.Consola
-```
-
 ## Modo Gráfico (JavaFX)
 
 ### Ejecutar la interfaz gráfica:
@@ -101,6 +90,17 @@ java --module-path lib/javafx-sdk-20.0.2/lib \
      --add-modules javafx.controls,javafx.fxml \
      -cp "out:lib/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar" \
      vista.VentanaInicio
+```
+
+## Modo Consola
+
+### Ejecutar la app en modo texto:
+
+```bash
+java --module-path lib/javafx-sdk-20.0.2/lib \
+     --add-modules javafx.controls,javafx.fxml \
+     -cp "out:lib/mysql-connector-j-8.3.0/mysql-connector-j-8.3.0.jar" \
+     menu.Consola
 ```
 
 ## Nota para usuarios de Windows
