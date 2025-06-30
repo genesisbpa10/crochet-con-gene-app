@@ -41,7 +41,7 @@ public class VentanaRegistrarPatron {
 
         Label puntoLabel = new Label("Seleccionar Punto:");
         ComboBox<Punto> puntoCombo = new ComboBox<>(
-            FXCollections.observableArrayList(controladorPunto.obtenerPuntos())
+            FXCollections.observableArrayList(controladorPunto.obtenerPuntos(usuario.getIdUsuario()))
         );
         puntoCombo.setCellFactory(lv -> new ListCell<>() {
             @Override protected void updateItem(Punto item, boolean empty) {

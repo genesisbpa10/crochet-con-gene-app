@@ -30,7 +30,7 @@ public class VentanaPrincipal extends Application {
 
         Button puntosBtn = new Button("Gestión de Puntos");
         puntosBtn.setOnAction(e ->
-            new VentanaRegistrarPunto(usuarioLogueado).mostrarVentana()
+            new VentanaPuntos(usuarioLogueado).mostrarVentana()
         );
 
         Button patronesBtn = new Button("Gestión de Patrones");
