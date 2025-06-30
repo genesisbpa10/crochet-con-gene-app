@@ -23,14 +23,17 @@ public class RepositorioPunto {
         }
     }
 
-    public List<Punto> listarTodos() {
+    // NUEVO: Listar puntos por usuario
+    public List<Punto> obtenerPuntosPorUsuario(int idUsuario) {
         List<Punto> puntos = new ArrayList<>();
-        String sql = "SELECT * FROM Punto";
+        String sql = "SELECT * FROM Punto WHERE idUsuario = ?";
         try (Connection conn = ConexionBD.obtenerConexion();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idUsuario);
+            ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Punto p = new Punto(
+                    rs.getInt("idPunto"),
                     rs.getString("nombrePunto"),
                     rs.getString("descripcionPunto"),
                     rs.getString("caracteristicasPunto"),
@@ -55,6 +58,7 @@ public class RepositorioPunto {
         }
     }
 
+    // NUEVO: Actualizar punto por id
     public void actualizar(Punto punto, int idPunto) {
         String sql = "UPDATE Punto SET nombrePunto = ?, descripcionPunto = ?, caracteristicasPunto = ?, pesoPunto = ? WHERE idPunto = ?";
         try (Connection conn = ConexionBD.obtenerConexion();
@@ -69,6 +73,7 @@ public class RepositorioPunto {
             e.printStackTrace();
         }
     }
+
     public Punto buscarPorId(int idPunto) {
         Punto punto = null;
         String sql = "SELECT * FROM Punto WHERE idPunto = ?";
@@ -78,6 +83,7 @@ public class RepositorioPunto {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 punto = new Punto(
+                    rs.getInt("idPunto"),
                     rs.getString("nombrePunto"),
                     rs.getString("descripcionPunto"),
                     rs.getString("caracteristicasPunto"),
@@ -89,6 +95,7 @@ public class RepositorioPunto {
         }
         return punto;
     }
+
     public Punto buscarPorNombre(String nombre) {
         Punto punto = null;
         String sql = "SELECT * FROM Punto WHERE nombrePunto = ?";
@@ -98,6 +105,7 @@ public class RepositorioPunto {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 punto = new Punto(
+                    rs.getInt("idPunto"),
                     rs.getString("nombrePunto"),
                     rs.getString("descripcionPunto"),
                     rs.getString("caracteristicasPunto"),
@@ -108,20 +116,5 @@ public class RepositorioPunto {
             e.printStackTrace();
         }
         return punto;
-    
-    }
-
-    public void guardar(Punto punto) {
-        String sql = "INSERT INTO Punto (nombrePunto, descripcionPunto, caracteristicasPunto, pesoPunto) VALUES (?, ?, ?, ?)";
-        try (Connection conn = ConexionBD.obtenerConexion();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, punto.getNombrePunto());
-            stmt.setString(2, punto.getDescripcionPunto());
-            stmt.setString(3, punto.getCaracteristicasPunto());
-            stmt.setString(4, punto.getPesoPunto());
-            stmt.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }

@@ -2,6 +2,8 @@ package persistencia;
 
 import modelo.Material;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RepositorioMaterial {
 
@@ -80,4 +82,30 @@ public class RepositorioMaterial {
             e.printStackTrace();
         }
     }
+    public List<Material> obtenerMaterialesPorUsuario(int idUsuario) {
+    List<Material> materiales = new ArrayList<>();
+    String sql = "SELECT * FROM Material WHERE idUsuario = ?";
+
+    try (Connection conn = ConexionBD.obtenerConexion();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setInt(1, idUsuario);
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()) {
+            Material material = new Material(
+                rs.getInt("idMaterial"),
+                rs.getString("nombreMaterial"),
+                rs.getString("colorMaterial"),
+                rs.getString("tipoMaterial"),
+                rs.getDouble("pesoMaterial"),
+                rs.getInt("idUsuario")
+            );
+            materiales.add(material);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+    return materiales;
+}
 }

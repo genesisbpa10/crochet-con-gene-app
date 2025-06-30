@@ -23,4 +23,21 @@ public class ControladorMaterial {
     public void eliminarMaterial(int id) {
         repositorio.eliminar(id);
     }
+
+    // NUEVO: Obtener todos los materiales de un usuario
+    public List<Material> obtenerMateriales(int idUsuario) {
+        return repositorio.obtenerMaterialesPorUsuario(idUsuario);
+    }
+
+    // NUEVO: Modificar un material existente
+    public void modificarMaterial(int idMaterial, String nombre, String color, String tipo, double peso) {
+        Material material = repositorio.buscarPorId(idMaterial);
+        if (material != null) {
+            material.setNombreMaterial(nombre);
+            material.setColorMaterial(color);
+            material.setTipoMaterial(tipo);
+            material.setPesoMaterial(peso);
+            repositorio.actualizar(material);
+        }
+    }
 }
