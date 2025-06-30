@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import modelo.ComposicionPatron;
@@ -41,7 +42,26 @@ public class VentanaPatrones {
         descCol.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getDescripcion()));
         TableColumn<Patron, String> tipoCol = new TableColumn<>("Tipo");
         tipoCol.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getTipoPatron()));
-        tabla.getColumns().addAll(nombreCol, descCol, tipoCol);
+
+        TableColumn<Patron, String> composicionCol = new TableColumn<>("Composición");
+        composicionCol.setCellValueFactory(data -> {
+            Patron patron = data.getValue();
+            if (patron.getComposicion() == null || patron.getComposicion().isEmpty()) {
+                return new javafx.beans.property.SimpleStringProperty("");
+            }
+            StringBuilder sb = new StringBuilder();
+            for (ComposicionPatron cp : patron.getComposicion()) {
+                if (sb.length() > 0) sb.append(", ");
+                sb.append(cp.getPunto().getNombrePunto()).append(" x").append(cp.getCantidad());
+            }
+            return new javafx.beans.property.SimpleStringProperty(sb.toString());
+        });
+
+        tabla.getColumns().addAll(nombreCol, descCol, tipoCol, composicionCol);
+
+        // --- CAMBIO: Ajustar altura y crecimiento de la tabla ---
+        tabla.setPrefHeight(500); // Muestra más filas sin scroll
+        VBox.setVgrow(tabla, Priority.ALWAYS); // Permite que la tabla crezca si hay espacio
 
         // Campos de edición/registro
         Label nombreLabel = new Label("Nombre del Patrón:");
@@ -135,6 +155,11 @@ public class VentanaPatrones {
                 resultado.setText("Complete todos los campos y agregue al menos un punto.");
                 return;
             }
+            // DEBUG: Ver qué hay en la composición
+            System.out.println("Composición a guardar:");
+            for (ComposicionPatron cp : composicion) {
+                System.out.println("Punto: " + cp.getPunto().getIdPunto() + " - " + cp.getPunto().getNombrePunto() + ", Cantidad: " + cp.getCantidad());
+            }
             controladorPatron.registrarPatron(nom, desc, tipo, usuario.getIdUsuario(), new ArrayList<>(composicion));
             resultado.setText("¡Patrón registrado con éxito!");
             cargarPatrones();
@@ -191,7 +216,8 @@ public class VentanaPatrones {
         );
         layout.setPadding(new Insets(20));
 
-        Scene scene = new Scene(layout, 600, 800);
+        // --- CAMBIO: Hacer la ventana más grande para aprovechar el espacio ---
+        Scene scene = new Scene(layout, 800, 900);
         stage.setScene(scene);
         stage.setTitle("Gestión de Patrones");
         stage.show();
