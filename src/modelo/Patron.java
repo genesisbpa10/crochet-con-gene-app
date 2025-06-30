@@ -1,66 +1,47 @@
 package modelo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Patron {
     private int idPatron;
-    private String nombrePatron;
-    private String descripcionPatron;
+    private String nombre;
+    private String descripcion;
     private String tipoPatron;
-    private List<ComposicionPatron> composicion; // Lista de puntos con sus materiales
+    private int idUsuario;
+    private List<ComposicionPatron> composicion;
 
-    public Patron(String nombrePatron, String descripcionPatron, String tipoPatron) {
-        this.nombrePatron = nombrePatron;
-        this.descripcionPatron = descripcionPatron;
-        this.tipoPatron = tipoPatron;
-        this.composicion = new ArrayList<>();
+    // Constructor para creación (sin idPatron aún)
+    public Patron(String nombre, String descripcion, String tipoPatron, int idUsuario) {
+        this.nombre      = nombre;
+        this.descripcion = descripcion;
+        this.tipoPatron  = tipoPatron;
+        this.idUsuario   = idUsuario;
     }
 
-    public Patron(int idPatron, String nombrePatron, String descripcionPatron, String tipoPatron) {
-        this(nombrePatron, descripcionPatron, tipoPatron);
-        this.idPatron = idPatron;
+    // Constructor completo (para leer de BD)
+    public Patron(int idPatron, String nombre, String descripcion, String tipoPatron, int idUsuario) {
+        this.idPatron    = idPatron;
+        this.nombre      = nombre;
+        this.descripcion = descripcion;
+        this.tipoPatron  = tipoPatron;
+        this.idUsuario   = idUsuario;
     }
 
-    public void agregarComposicion(ComposicionPatron cp) {
-        this.composicion.add(cp);
-    }
+    // Getters
+    public int getIdPatron()       { return idPatron; }
+    public String getNombre()      { return nombre; }
+    public String getDescripcion() { return descripcion; }
+    public String getTipoPatron()  { return tipoPatron; }
+    public int getIdUsuario()      { return idUsuario; }
+    public List<ComposicionPatron> getComposicion() { return composicion; }
 
-    public List<ComposicionPatron> getComposicion() {
-        return composicion;
+    // Setters (el idPatron normalmente no se cambia)
+    public void setNombre(String nombre)           { this.nombre = nombre; }
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+    public void setTipoPatron(String tipoPatron)   { this.tipoPatron = tipoPatron; }
+    public void setComposicion(List<ComposicionPatron> composicion) {
+        this.composicion = composicion;
     }
-
-    // Getters y setters restantes
-
-    public int getIdPatron() {
-        return idPatron;
-    }
-
-    public void setIdPatron(int idPatron) {
-        this.idPatron = idPatron;
-    }
-
-    public String getNombrePatron() {
-        return nombrePatron;
-    }
-
-    public void setNombrePatron(String nombrePatron) {
-        this.nombrePatron = nombrePatron;
-    }
-
-    public String getDescripcionPatron() {
-        return descripcionPatron;
-    }
-
-    public void setDescripcionPatron(String descripcionPatron) {
-        this.descripcionPatron = descripcionPatron;
-    }
-
-    public String getTipoPatron() {
-        return tipoPatron;
-    }
-
-    public void setTipoPatron(String tipoPatron) {
-        this.tipoPatron = tipoPatron;
-    }
+    // Opcional:
+    // public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
 }
