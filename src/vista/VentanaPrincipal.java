@@ -25,7 +25,7 @@ public class VentanaPrincipal extends Application {
 
         Button materialesBtn = new Button("Gestión de Materiales");
         materialesBtn.setOnAction(e ->
-            new VentanaRegistrarMaterial(usuarioLogueado).mostrarVentana()
+            new VentanaMateriales(usuarioLogueado).mostrarVentana()
         );
 
         Button puntosBtn = new Button("Gestión de Puntos");
