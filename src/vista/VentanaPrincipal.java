@@ -3,7 +3,8 @@ package vista;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import modelo.Usuario;
@@ -22,36 +23,40 @@ public class VentanaPrincipal extends Application {
     public void start(Stage primaryStage) {
         Label bienvenida = new Label("Bienvenido/a " + usuarioLogueado.getNombreUsuario());
 
-        Button materialesBtn = new Button("Gestion de Materiales");
-        materialesBtn.setOnAction(e -> {
-            VentanaRegistrarMaterial ventana = new VentanaRegistrarMaterial(usuarioLogueado);
-            ventana.mostrarVentana();
-        });
+        Button materialesBtn = new Button("Gestión de Materiales");
+        materialesBtn.setOnAction(e ->
+            new VentanaRegistrarMaterial(usuarioLogueado).mostrarVentana()
+        );
 
         Button puntosBtn = new Button("Gestión de Puntos");
-        puntosBtn.setOnAction(e -> {
-            VentanaRegistrarPunto ventana = new VentanaRegistrarPunto(usuarioLogueado);
-            ventana.mostrarVentana();
-        });
+        puntosBtn.setOnAction(e ->
+            new VentanaRegistrarPunto(usuarioLogueado).mostrarVentana()
+        );
 
-        Button patronesBtn = new Button("Gestion de Patrones");
-        Button logoutBtn = new Button("Cerrar sesion");
+        Button patronesBtn = new Button("Gestión de Patrones");
+        // ← pasamos el usuarioLogueado aquí también
+        patronesBtn.setOnAction(e ->
+            new VentanaRegistrarPatron(usuarioLogueado).mostrarVentana()
+        );
 
-        VBox layout = new VBox(10, bienvenida);
-
-        if (usuarioLogueado.getRolUsuario().equalsIgnoreCase("administrador")) {
-            layout.getChildren().add(materialesBtn);
-        }
-
-        layout.getChildren().addAll(puntosBtn, patronesBtn, logoutBtn);
-        layout.setPadding(new Insets(20));
-
+        Button logoutBtn = new Button("Cerrar sesión");
         logoutBtn.setOnAction(e -> {
             new VentanaLogin().start(new Stage());
             primaryStage.close();
         });
 
-        Scene scene = new Scene(layout, 300, 300);
+        VBox layout = new VBox(10, bienvenida);
+        layout.setPadding(new Insets(20));
+
+        if ("administrador".equalsIgnoreCase(usuarioLogueado.getRolUsuario())) {
+            layout.getChildren().add(materialesBtn);
+        } else {
+            layout.getChildren().addAll(puntosBtn, patronesBtn);
+        }
+
+        layout.getChildren().add(logoutBtn);
+
+        Scene scene = new Scene(layout, 300, 200);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Panel Principal - " + usuarioLogueado.getRolUsuario());
         primaryStage.show();
